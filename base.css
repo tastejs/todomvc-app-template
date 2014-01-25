@@ -105,9 +105,6 @@ input[type="checkbox"] {
 	background: #8d7d77;
 	background: -webkit-gradient(linear, left top, left bottom, from(rgba(132, 110, 100, 0.8)),to(rgba(101, 84, 76, 0.8)));
 	background: -webkit-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
-	background: -moz-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
-	background: -o-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
-	background: -ms-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
 	background: linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#9d8b83', EndColorStr='#847670');
 	border-top-left-radius: 1px;
@@ -128,7 +125,6 @@ input[type="checkbox"] {
 	padding: 6px;
 	border: 1px solid #999;
 	box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
-	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	-o-box-sizing: border-box;
@@ -250,9 +246,6 @@ label[for='toggle-all'] {
 	display: block;
 	line-height: 1.2;
 	-webkit-transition: color 0.4s;
-	-moz-transition: color 0.4s;
-	-ms-transition: color 0.4s;
-	-o-transition: color 0.4s;
 	transition: color 0.4s;
 }
 
@@ -273,9 +266,6 @@ label[for='toggle-all'] {
 	font-size: 22px;
 	color: #a88a8a;
 	-webkit-transition: all 0.2s;
-	-moz-transition: all 0.2s;
-	-ms-transition: all 0.2s;
-	-o-transition: all 0.2s;
 	transition: all 0.2s;
 }
 
@@ -283,9 +273,6 @@ label[for='toggle-all'] {
 	text-shadow: 0 0 1px #000,
 				 0 0 10px rgba(199, 107, 107, 0.8);
 	-webkit-transform: scale(1.3);
-	-moz-transform: scale(1.3);
-	-ms-transform: scale(1.3);
-	-o-transform: scale(1.3);
 	transform: scale(1.3);
 }
 
