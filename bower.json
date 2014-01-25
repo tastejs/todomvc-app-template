@@ -1,0 +1,12 @@
+{
+  "name": "todomvc-framework-name",
+  "ignore": [
+    "css",
+    "js",
+    "index.html"
+  ],
+  "dependencies": {
+    "todomvc-common": "~0.1.9",
+    "todomvc-app-template": "~0.1.0"
+  }
+}
