@@ -9,9 +9,9 @@
 
 - Read the [Application Specification](https://github.com/tastejs/todomvc/blob/gh-pages/app-spec.md) before touching the template.
 
-- Replace this file with `app-readme.md` and rename it to `readme.md`.
+- Replace this file with `app-readme.md`, rename it to `readme.md`, and fill it out.
 
-- Clone this repo and install the dependencies with [Bower](http://bower.io) by running: `bower install`.
+- <del>Clone this repo and install the dependencies with [Bower](http://bower.io) by running: `bower install`.</del>
 
 
 ## License
