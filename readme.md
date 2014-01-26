@@ -2,7 +2,7 @@
 
 > Template used for creating [TodoMVC](http://todomvc.com) apps
 
-
+![](https://raw.github.com/tastejs/todomvc/gh-pages/site-assets/screenshot.png)
 
 
 ## Getting Started
