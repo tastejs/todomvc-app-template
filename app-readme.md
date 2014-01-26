@@ -1,6 +1,6 @@
 # Framework Name • [TodoMVC](http://todomvc.com)
 
-> Official description of the framework (from their website)
+> Official description of the framework (from its website)
 
 
 ## Resources
@@ -27,7 +27,7 @@
 
 ## Implementation
 
-How was the app created? Any spec violations?
+How was the app created? Anything worth sharing about the process of creating the app? Any spec violations?
 
 
 ## Credit
