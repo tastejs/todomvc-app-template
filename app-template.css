@@ -12,6 +12,7 @@ button {
 	font-size: 100%;
 	vertical-align: baseline;
 	font-family: inherit;
+	font-weight: inherit;
 	color: inherit;
 	-webkit-appearance: none;
 	-ms-appearance: none;
@@ -29,6 +30,7 @@ body {
 	-moz-font-smoothing: antialiased;
 	-ms-font-smoothing: antialiased;
 	font-smoothing: antialiased;
+	font-weight: 300;
 }
 
 button,
@@ -61,11 +63,13 @@ input[type="checkbox"] {
 
 #todoapp input::-webkit-input-placeholder {
 	font-style: italic;
+	font-weight: 300;
 }
 
 #todoapp input::-moz-placeholder {
 	font-style: italic;
 	color: #a9a9a9;
+	font-weight: 300;
 }
 
 #todoapp h1 {
@@ -98,6 +102,7 @@ input[type="checkbox"] {
 	left: 0;
 	height: 15px;
 	z-index: 2;
+	background: -moz-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
 	background: -webkit-linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
 	background: linear-gradient(top, rgba(132, 110, 100, 0.8), rgba(101, 84, 76, 0.8));
 	border-top-left-radius: 1px;
@@ -111,6 +116,7 @@ input[type="checkbox"] {
 	width: 100%;
 	font-size: 24px;
 	font-family: inherit;
+	font-weight: inherit;
 	line-height: 1.4em;
 	border: 0;
 	outline: none;
@@ -156,7 +162,7 @@ label[for='toggle-all'] {
 
 #toggle-all:before {
 	content: '»';
-	font-size: 28px;
+	font-size: 30px;
 	color: #d9d9d9;
 	padding: 0 25px 7px;
 }
@@ -303,9 +309,9 @@ label[for='toggle-all'] {
 	z-index: -1;
 	overflow: hidden;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3),
-				0 6px 0 -3px rgba(255, 255, 255, 0.8),
+				0 6px 0 -3px #f6f6f6,
 				0 7px 1px -3px rgba(0, 0, 0, 0.3),
-				0 43px 0 -6px rgba(255, 255, 255, 0.8),
+				0 43px 0 -6px #f6f6f6,
 				0 44px 2px -6px rgba(0, 0, 0, 0.2);
 }
 
@@ -334,24 +340,24 @@ label[for='toggle-all'] {
 }
 
 #filters li a.selected {
-	font-weight: bold;
+	text-decoration: underline;
 }
 
-#clear-completed {
+#clear-completed,
+html #clear-completed:active {
 	float: right;
 	position: relative;
 	line-height: 20px;
 	text-decoration: none;
-	background: rgba(0, 0, 0, 0.1);
+	background: #ededed;
 	font-size: 11px;
 	padding: 0 10px;
-	border-radius: 3px;
-	box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+	border-radius: 1px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
 #clear-completed:hover {
-	background: rgba(0, 0, 0, 0.15);
-	box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
 }
 
 #info {
