@@ -2,16 +2,18 @@
 
 > Template used for creating [TodoMVC](http://todomvc.com) apps
 
-![](https://raw.github.com/tastejs/todomvc/gh-pages/site-assets/screenshot.png)
+![](screenshot.png)
 
 
 ## Getting Started
 
 - Read the [Application Specification](https://github.com/tastejs/todomvc/blob/gh-pages/app-spec.md) before touching the template.
 
-- Replace this file with `app-readme.md`, rename it to `readme.md`, and fill it out.
+- Delete `readme.md` and `app-templates.css`.
 
-- <del>Clone this repo and install the dependencies with [Bower](http://bower.io) by running: `bower install`.</del>
+- Rename `app-readme.md` to `readme.md` and fill it out.
+
+- Clone this repo and install the dependencies with [Bower](http://bower.io) by running: `bower install`.
 
 
 ## License
