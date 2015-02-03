@@ -7,7 +7,7 @@
 
 ## Getting started
 
-- Read the [Application Specification](https://github.com/tastejs/todomvc/blob/gh-pages/app-spec.md) before touching the template.
+- Read the [Application Specification](https://github.com/tastejs/todomvc/blob/master/app-spec.md) before touching the template.
 
 - Delete this file and rename `app-readme.md` to `readme.md` and fill it out.
 
