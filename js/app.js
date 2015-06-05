@@ -62,6 +62,7 @@
             .text(function(d){
                 return d.descr;
             }).on('dblclick', function(){
+                d3.selectAll('li.editing').classed('editing', false);
                 d3.select(this.parentNode.parentNode).classed('editing', true);
             });
 
