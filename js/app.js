@@ -16,6 +16,13 @@
         }
     });
 
+    d3.select('.clear-completed').on('click', function(){
+        data = data.filter(function(d){
+            return !d.completed;
+        });
+        update();
+    });
+
     // Update-exit-remove loop.
     var update = function() {
 
