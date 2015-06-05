@@ -5,7 +5,6 @@
     var data = [{descr: "Taste JavaScript", completed: true}
                 ,{descr: "Buy a unicorn", completed: false}];
 
-
     // Listen on enter key press to add an entry to the list.
     d3.select('.new-todo').on('keyup', function(){
         if(this.value == "") return;
@@ -17,30 +16,53 @@
         }
     });
 
-    // Init list.
-    update();
-
     // Update-exit-remove loop.
-    function update() {
+    var update = function() {
 
         var list = d3.select('.todo-list');
 
         var item = list.selectAll('li')
-            .data(data);
-
-        var liEnter = item.enter()
-
-        var li = liEnter.append("li")
-            .classed('completed', function(d){
-                return d.completed;
+            .data(data, function(d,i){
+                return d.descr + i;
             });
 
+        item.classed('completed', function(d){
+            return d.completed;
+        });
+
+        item.select('div.view label')
+            .text(function(d){
+                return d.descr;
+            });
+
+        var enter = item.enter().append("li");
+
+        var li = enter.classed('completed', function(d){
+            return d.completed;
+        });
+
         var view = li.append('div')
-            .attr('class', 'view');
+            .attr('class', 'view')
+            .on('click', function(d,i){
+                console.log(d,i);
+            });
+
+        view.append('input')
+            .attr('class', 'toggle')
+            .attr('type', 'checkbox')
+            .attr('checked', function(d){
+                return d.completed ? true : null;
+            })
+            .on('click', function(d){
+                d.completed = !d.completed;
+                update();
+            });
 
         view.append('label')
             .text(function(d){
                 return d.descr;
+            }).on('dblclick', function(){
+                d3.select(this.parentNode.parentNode).classed('editing', true);
             });
 
         view.append('button')
@@ -50,16 +72,22 @@
                 update();
             });
 
-        item.exit().remove();
-
-        item.classed('completed', function(d,i){
-                console.log(d,i)
-                return d.completed;
-            })
-            .select('label')
-            .text(function(d,i){
+        li.append('input')
+            .attr('class', 'edit')
+            .property('value', function(d){
                 return d.descr;
-            })
+            }).on('keyup', function(d){
+                if(d3.event.keyCode == 13) {
+                    d3.select(this.parentNode).classed('editing', false);
+                    d.descr = d3.select(this).property('value');
+                    update();
+                }
+            });
+
+        item.exit().remove();
     }
+
+    // Init list.
+    update();
 
 })(window);
