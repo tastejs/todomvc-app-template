@@ -16,6 +16,7 @@
         }
     });
 
+    // Listen on clear completed button.
     d3.select('.clear-completed').on('click', function(){
         data = data.filter(function(d){
             return !d.completed;
@@ -23,13 +24,41 @@
         update();
     });
 
+    // Listen on toggle all.
+    d3.select('input.toggle-all').on('change', function(){
+        var checked = this.checked;
+        data.forEach(function(d){
+            d.completed = checked;
+        });
+        update();
+    });
+
+    // Listen on route changes.
+    d3.select(window).on('hashchange', function(){
+        update()
+    });
+
+    // Filter according to route, and then update.
+    var update = function(){
+        var filtered = data.filter(function(d){
+            if(location.hash == '#/active'){
+                return !d.completed;
+            }
+            if(location.hash == '#/completed'){
+                return d.completed;
+            }
+            return true;
+        });
+        update0(filtered);
+    };
+
     // Update-exit-remove loop.
-    var update = function() {
+    var update0 = function(filtered) {
 
         var list = d3.select('.todo-list');
 
         var item = list.selectAll('li')
-            .data(data, function(d,i){
+            .data(filtered, function(d,i){
                 return d.descr + i;
             });
 
@@ -42,7 +71,13 @@
                 return d.descr;
             });
 
-        var enter = item.enter().append("li");
+        item.select('input.toggle')
+            .property('checked', function(d){
+                return d.completed;
+            });
+
+        var enter = item.enter()
+            .append("li");
 
         var li = enter.classed('completed', function(d){
             return d.completed;
@@ -57,8 +92,8 @@
         view.append('input')
             .attr('class', 'toggle')
             .attr('type', 'checkbox')
-            .attr('checked', function(d){
-                return d.completed ? true : null;
+            .property('checked', function(d){
+                return d.completed;
             })
             .on('click', function(d){
                 d.completed = !d.completed;
