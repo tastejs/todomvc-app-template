@@ -128,10 +128,14 @@
 
         item.exit().remove();
 
-        d3.select('span.todo-count strong')
-            .text(data.filter(function(d){
-                return !d.completed;
-            }).length);
+        d3.select('span.todo-count')
+            .html(function(){
+                var left = data.filter(function(d){
+                    return !d.completed;
+                }).length;
+                var text = (left == 1 ? 'item' : 'items') + ' left'
+                return '<strong>' + left + '</strong>' + ' ' + text;
+            });
 
         d3.selectAll('section.main, footer.footer')
             .style('display', function(){
