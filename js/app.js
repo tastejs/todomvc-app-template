@@ -1,6 +1,9 @@
 (function (window) {
     'use strict';
 
+    // Constants.
+    var ENTER_KEY = 13;
+
     // Initial data.
     var data = [{descr: "Taste JavaScript", completed: true}
                 ,{descr: "Buy a unicorn", completed: false}];
@@ -9,7 +12,7 @@
     d3.select('.new-todo').on('keyup', function(){
         if(this.value.trim() == "") return;
 
-        if(d3.event.keyCode == 13) {
+        if(d3.event.keyCode == ENTER_KEY) {
             data.push({descr: this.value, completed: false});
             update();
             this.value = "";
@@ -119,7 +122,7 @@
             .property('value', function(d){
                 return d.descr;
             }).on('keyup', function(d){
-                if(d3.event.keyCode == 13) {
+                if(d3.event.keyCode == ENTER_KEY) {
                     d3.select(this.parentNode).classed('editing', false);
                     d.descr = d3.select(this).property('value');
                     update();
