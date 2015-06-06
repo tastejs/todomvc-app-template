@@ -127,6 +127,19 @@
             });
 
         item.exit().remove();
+
+        d3.select('span.todo-count strong')
+            .text(data.filter(function(d){
+                return !d.completed;
+            }).length);
+
+        d3.selectAll('section.main, footer.footer')
+            .style('display', function(){
+                if(data.length == 0){
+                    return 'none'
+                }
+                return 'block';
+            });
     };
 
     // Init list.
