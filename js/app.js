@@ -7,7 +7,7 @@
 
     // Listen on enter key press to add an entry to the list.
     d3.select('.new-todo').on('keyup', function(){
-        if(this.value == "") return;
+        if(this.value.trim() == "") return;
 
         if(d3.event.keyCode == 13) {
             data.push({descr: this.value, completed: false});
