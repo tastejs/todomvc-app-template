@@ -76,12 +76,11 @@
                 return d.completed;
             });
 
-        var enter = item.enter()
-            .append("li");
-
-        var li = enter.classed('completed', function(d){
-            return d.completed;
-        });
+        var li = item.enter()
+            .append("li")
+            .classed('completed', function(d){
+                return d.completed;
+            });
 
         var view = li.append('div')
             .attr('class', 'view')
@@ -128,7 +127,7 @@
             });
 
         item.exit().remove();
-    }
+    };
 
     // Init list.
     update();
