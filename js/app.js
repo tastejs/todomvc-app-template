@@ -134,9 +134,10 @@
         view.append('label')
             .text(function(d){
                 return d.descr;
-            }).on('dblclick', function(){
-                d3.selectAll('li.editing').classed('editing', false);
-                d3.select(this.parentNode.parentNode).classed('editing', true);
+            }).on('dblclick', function(d,i){
+                li.each(function(e, j){
+                    d3.select(this).classed('editing',i==j);
+                });
             });
 
         view.append('button')
