@@ -4,9 +4,11 @@
     // Constants.
     var ENTER_KEY = 13;
 
-    // Initial data.
-    var data = [{descr: "Taste JavaScript", completed: true}
-                ,{descr: "Buy a unicorn", completed: false}];
+    // Init data from local storage
+    var data = [];
+    if(localStorage.getItem('todos-d3')){
+        data = JSON.parse(localStorage.getItem('todos-d3'));
+    }
 
     // Listen on enter key press to add an entry to the list.
     d3.select('.new-todo').on('keyup', function(){
@@ -44,7 +46,7 @@
 
     // Listen on route changes.
     d3.select(window).on('hashchange', function(){
-        update()
+        update();
     });
 
     // Filter according to route, and then update.
@@ -72,6 +74,8 @@
         d3.selectAll('section.main, footer.footer')
             .classed('hidden', data.length == 0);
 
+        // Update local storage
+        localStorage.setItem('todos-d3', JSON.stringify(data))
     };
 
     // Update-exit-remove loop.
