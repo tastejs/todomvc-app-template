@@ -79,11 +79,15 @@
 
         var list = d3.select('.todo-list');
 
+        // DATA JOIN
+        // Join new data with old elements.
         var item = list.selectAll('li')
             .data(filtered, function(d,i){
                 return d.descr + i;
             });
 
+        // UPDATE
+        // Update old elements.
         item.classed('completed', function(d){
             return d.completed;
         });
@@ -98,6 +102,8 @@
                 return d.completed;
             });
 
+        // ENTER
+        // Create new elements, if any.
         var li = item.enter()
             .append("li")
             .classed('completed', function(d){
@@ -148,6 +154,8 @@
                 }
             });
 
+        // EXIT
+        // Remove old elements.
         item.exit().remove();
     };
 
