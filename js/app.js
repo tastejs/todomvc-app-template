@@ -20,7 +20,7 @@
     });
 
     // Listen on clear completed button.
-    d3.select('.clear-completed').on('click', function(){
+    d3.select('button.clear-completed').on('click', function(){
         data = data.filter(function(d){
             return !d.completed;
         });
@@ -34,6 +34,12 @@
             d.completed = checked;
         });
         update();
+    });
+
+    // Listen on route buttons.
+    d3.selectAll('ul.filters li').on('click', function(){
+        d3.select('ul.filters li a.selected').classed('selected', false);
+        d3.select(this).select('a').classed('selected', true);
     });
 
     // Listen on route changes.
@@ -52,7 +58,20 @@
             }
             return true;
         });
+
         update0(filtered);
+
+        // Adjust other parts of page
+        var left = data.filter(function(d){
+            return !d.completed;
+        }).length;
+        d3.select('span.todo-count strong.count')
+            .text(left);
+        d3.select('span.todo-count span.plural')
+            .text(left == 1 ? "" : "s");
+        d3.selectAll('section.main, footer.footer')
+            .classed('hidden', data.length == 0);
+
     };
 
     // Update-exit-remove loop.
@@ -130,23 +149,6 @@
             });
 
         item.exit().remove();
-
-        d3.select('span.todo-count')
-            .html(function(){
-                var left = data.filter(function(d){
-                    return !d.completed;
-                }).length;
-                var text = (left == 1 ? 'item' : 'items') + ' left'
-                return '<strong>' + left + '</strong>' + ' ' + text;
-            });
-
-        d3.selectAll('section.main, footer.footer')
-            .style('display', function(){
-                if(data.length == 0){
-                    return 'none'
-                }
-                return 'block';
-            });
     };
 
     // Init list.
