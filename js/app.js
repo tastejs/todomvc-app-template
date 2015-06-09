@@ -3,6 +3,7 @@
 
     // Constants.
     var ENTER_KEY = 13;
+    var ESCAPE_KEY = 27;
 
     // Init data from local storage
     var data = [];
@@ -136,7 +137,14 @@
                 return d.descr;
             }).on('dblclick', function(d,i){
                 li.each(function(e, j){
-                    d3.select(this).classed('editing',i==j);
+                    if(i==j){
+                        d3.select(this).classed('editing',true);
+                        d3.select(this).select('input.edit').each(function(){
+                            this.focus();
+                        });
+                    } else {
+                        d3.select(this).classed('editing',false);
+                    }
                 });
             });
 
@@ -151,11 +159,18 @@
             .attr('class', 'edit')
             .property('value', function(d){
                 return d.descr;
-            }).on('keyup', function(d){
+            })
+            .on('blur', function(d, i){
+                li.classed('editing', false);
+            })
+            .on('keyup', function(d){
                 if(d3.event.keyCode == ENTER_KEY) {
-                    d3.select(this.parentNode).classed('editing', false);
+                    li.classed('editing', false);
                     d.descr = d3.select(this).property('value');
                     update();
+                }
+                if (d3.event.keyCode == ESCAPE_KEY){
+                    li.classed('editing', false);
                 }
             });
 
