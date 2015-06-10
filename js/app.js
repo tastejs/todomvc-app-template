@@ -6,10 +6,7 @@
     var ESCAPE_KEY = 27;
 
     // Init data from local storage
-    var data = [];
-    if(localStorage.getItem('todos-d3')){
-        data = JSON.parse(localStorage.getItem('todos-d3'));
-    }
+    var data = JSON.parse(localStorage.getItem('todos-d3')) || [];
 
     // Listen on enter key press to add an entry to the list.
     d3.select('.new-todo').on('keyup', function(){
