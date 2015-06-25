@@ -83,7 +83,7 @@
         // DATA JOIN
         // Join new data with old elements.
         var item = list.selectAll('li')
-            .data(filtered, function(d,i){
+            .data(filtered, function(d, i){
                 return d.descr + i;
             });
 
@@ -128,23 +128,23 @@
         view.append('label')
             .text(function(d){
                 return d.descr;
-            }).on('dblclick', function(d,i){
+            }).on('dblclick', function(d, i){
                 li.each(function(e, j){
                     if(i === j){
-                        d3.select(this).classed('editing',true);
+                        d3.select(this).classed('editing', true);
                         d3.select(this).select('input.edit').each(function () {
                             this.focus();
                         });
                     } else {
-                        d3.select(this).classed('editing',false);
+                        d3.select(this).classed('editing', false);
                     }
                 });
             });
 
         view.append('button')
             .attr('class', 'destroy')
-            .on('click', function(d,i){
-                data.splice(i,1);
+            .on('click', function(d, i){
+                data.splice(i, 1);
                 update();
             });
 
