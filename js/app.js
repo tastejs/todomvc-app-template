@@ -9,10 +9,9 @@
     var data = JSON.parse(localStorage.getItem('todos-d3')) || [];
 
     // Listen on enter key press to add an entry to the list.
-    d3.select('.new-todo').on('keyup', function(){
-        if(this.value.trim() == "") return;
-
-        if(d3.event.keyCode == ENTER_KEY) {
+    d3.select('.new-todo').on('keyup', function () {
+    if(this.value.trim() === "") { return; }
+        if(d3.event.keyCode === ENTER_KEY) {
             data.push({descr: this.value, completed: false});
             update();
             this.value = "";
@@ -20,7 +19,7 @@
     });
 
     // Listen on clear completed button.
-    d3.select('button.clear-completed').on('click', function(){
+    d3.select('button.clear-completed').on('click', function () {
         data = data.filter(function(d){
             return !d.completed;
         });
@@ -28,7 +27,7 @@
     });
 
     // Listen on toggle all.
-    d3.select('input.toggle-all').on('change', function(){
+    d3.select('input.toggle-all').on('change', function () {
         var checked = this.checked;
         data.forEach(function(d){
             d.completed = checked;
@@ -37,23 +36,23 @@
     });
 
     // Listen on route buttons.
-    d3.selectAll('ul.filters li').on('click', function(){
+    d3.selectAll('ul.filters li').on('click', function () {
         d3.select('ul.filters li a.selected').classed('selected', false);
         d3.select(this).select('a').classed('selected', true);
     });
 
     // Listen on route changes.
-    d3.select(window).on('hashchange', function(){
+    d3.select(window).on('hashchange', function () {
         update();
     });
 
     // Filter according to route, and then update.
-    var update = function(){
+    var update = function () {
         var filtered = data.filter(function(d){
-            if(location.hash == '#/active'){
+            if(location.hash === '#/active'){
                 return !d.completed;
             }
-            if(location.hash == '#/completed'){
+            if(location.hash === '#/completed'){
                 return d.completed;
             }
             return true;
@@ -68,12 +67,12 @@
         d3.select('span.todo-count strong.count')
             .text(left);
         d3.select('span.todo-count span.plural')
-            .text(left == 1 ? "" : "s");
+            .text(left === 1 ? "" : "s");
         d3.selectAll('section.main, footer.footer')
-            .classed('hidden', data.length == 0);
+            .classed('hidden', data.length === 0);
 
         // Update local storage
-        localStorage.setItem('todos-d3', JSON.stringify(data))
+        localStorage.setItem('todos-d3', JSON.stringify(data));
     };
 
     // Update-exit-remove loop.
@@ -113,10 +112,7 @@
             });
 
         var view = li.append('div')
-            .attr('class', 'view')
-            .on('click', function(d,i){
-                console.log(d,i);
-            });
+            .attr('class', 'view');
 
         view.append('input')
             .attr('class', 'toggle')
@@ -134,9 +130,9 @@
                 return d.descr;
             }).on('dblclick', function(d,i){
                 li.each(function(e, j){
-                    if(i==j){
+                    if(i === j){
                         d3.select(this).classed('editing',true);
-                        d3.select(this).select('input.edit').each(function(){
+                        d3.select(this).select('input.edit').each(function () {
                             this.focus();
                         });
                     } else {
@@ -161,12 +157,12 @@
                 li.classed('editing', false);
             })
             .on('keyup', function(d){
-                if(d3.event.keyCode == ENTER_KEY) {
+                if(d3.event.keyCode === ENTER_KEY) {
                     li.classed('editing', false);
                     d.descr = d3.select(this).property('value');
                     update();
                 }
-                if (d3.event.keyCode == ESCAPE_KEY){
+                if (d3.event.keyCode === ESCAPE_KEY){
                     li.classed('editing', false);
                 }
             });
