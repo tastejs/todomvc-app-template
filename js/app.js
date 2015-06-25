@@ -1,4 +1,4 @@
-(function (window) {
+(function(window) {
     'use strict';
 
     // Constants.
@@ -9,7 +9,7 @@
     var data = JSON.parse(localStorage.getItem('todos-d3')) || [];
 
     // Listen on enter key press to add an entry to the list.
-    d3.select('.new-todo').on('keyup', function () {
+    d3.select('.new-todo').on('keyup', function() {
     if(this.value.trim() === "") { return; }
         if(d3.event.keyCode === ENTER_KEY) {
             data.push({descr: this.value, completed: false});
@@ -19,40 +19,40 @@
     });
 
     // Listen on clear completed button.
-    d3.select('button.clear-completed').on('click', function () {
-        data = data.filter(function(d){
+    d3.select('button.clear-completed').on('click', function() {
+        data = data.filter(function(d) {
             return !d.completed;
         });
         update();
     });
 
     // Listen on toggle all.
-    d3.select('input.toggle-all').on('change', function () {
+    d3.select('input.toggle-all').on('change', function() {
         var checked = this.checked;
-        data.forEach(function(d){
+        data.forEach(function(d) {
             d.completed = checked;
         });
         update();
     });
 
     // Listen on route buttons.
-    d3.selectAll('ul.filters li').on('click', function () {
+    d3.selectAll('ul.filters li').on('click', function() {
         d3.select('ul.filters li a.selected').classed('selected', false);
         d3.select(this).select('a').classed('selected', true);
     });
 
     // Listen on route changes.
-    d3.select(window).on('hashchange', function () {
+    d3.select(window).on('hashchange', function() {
         update();
     });
 
     // Filter according to route, and then update.
-    var update = function () {
-        var filtered = data.filter(function(d){
-            if(location.hash === '#/active'){
+    var update = function() {
+        var filtered = data.filter(function(d) {
+            if(location.hash === '#/active') {
                 return !d.completed;
             }
-            if(location.hash === '#/completed'){
+            if(location.hash === '#/completed') {
                 return d.completed;
             }
             return true;
@@ -61,7 +61,7 @@
         data_bind(filtered);
 
         // Adjust other parts of page
-        var left = data.filter(function(d){
+        var left = data.filter(function(d) {
             return !d.completed;
         }).length;
         var completed = data.filter(function(d) {
@@ -88,7 +88,7 @@
         // DATA JOIN
         // Join new data with old elements.
         var item = list.selectAll('li')
-            .data(filtered, function(d, i){
+            .data(filtered, function(d, i) {
                 return d.descr + i;
             });
 
@@ -103,17 +103,17 @@
         view.append('input')
             .attr('class', 'toggle')
             .attr('type', 'checkbox')
-            .on('click', function(d){
+            .on('click', function(d) {
                 d.completed = !d.completed;
                 update();
             });
 
         view.append('label')
-            .on('dblclick', function(d, i){
-                li.each(function(e, j){
-                    if(i === j){
+            .on('dblclick', function(d, i) {
+                li.each(function(e, j) {
+                    if(i === j) {
                         d3.select(this).classed('editing', true);
-                        d3.select(this).select('input.edit').each(function () {
+                        d3.select(this).select('input.edit').each(function() {
                             this.focus();
                         });
                     } else {
@@ -124,23 +124,23 @@
 
         view.append('button')
             .attr('class', 'destroy')
-            .on('click', function(d, i){
+            .on('click', function(d, i) {
                 data.splice(i, 1);
                 update();
             });
 
         li.append('input')
             .attr('class', 'edit')
-            .on('blur', function(d, i){
+            .on('blur', function(d, i) {
                 li.classed('editing', false);
             })
-            .on('keyup', function(d){
+            .on('keyup', function(d) {
                 if(d3.event.keyCode === ENTER_KEY) {
                     li.classed('editing', false);
                     d.descr = d3.select(this).property('value');
                     update();
                 }
-                if (d3.event.keyCode === ESCAPE_KEY){
+                if (d3.event.keyCode === ESCAPE_KEY) {
                     li.classed('editing', false);
                 }
             });
@@ -151,22 +151,22 @@
 
         // UPDATE
         // Update old elements.
-        item.classed('completed', function(d){
+        item.classed('completed', function(d) {
             return d.completed;
         });
 
         item.select('div.view label')
-            .text(function(d){
+            .text(function(d) {
                 return d.descr;
             });
 
         item.select('input.toggle')
-            .property('checked', function(d){
+            .property('checked', function(d) {
                 return d.completed;
             });
 
         item.select('.edit')
-            .property('value', function(d){
+            .property('value', function(d) {
                 return d.descr;
             });
     };
