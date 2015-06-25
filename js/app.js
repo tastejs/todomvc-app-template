@@ -87,29 +87,10 @@
                 return d.descr + i;
             });
 
-        // UPDATE
-        // Update old elements.
-        item.classed('completed', function(d){
-            return d.completed;
-        });
-
-        item.select('div.view label')
-            .text(function(d){
-                return d.descr;
-            });
-
-        item.select('input.toggle')
-            .property('checked', function(d){
-                return d.completed;
-            });
-
         // ENTER
         // Create new elements, if any.
         var li = item.enter()
-            .append("li")
-            .classed('completed', function(d){
-                return d.completed;
-            });
+            .append("li");
 
         var view = li.append('div')
             .attr('class', 'view');
@@ -117,18 +98,13 @@
         view.append('input')
             .attr('class', 'toggle')
             .attr('type', 'checkbox')
-            .property('checked', function(d){
-                return d.completed;
-            })
             .on('click', function(d){
                 d.completed = !d.completed;
                 update();
             });
 
         view.append('label')
-            .text(function(d){
-                return d.descr;
-            }).on('dblclick', function(d, i){
+            .on('dblclick', function(d, i){
                 li.each(function(e, j){
                     if(i === j){
                         d3.select(this).classed('editing', true);
@@ -150,9 +126,6 @@
 
         li.append('input')
             .attr('class', 'edit')
-            .property('value', function(d){
-                return d.descr;
-            })
             .on('blur', function(d, i){
                 li.classed('editing', false);
             })
@@ -170,6 +143,27 @@
         // EXIT
         // Remove old elements.
         item.exit().remove();
+
+        // UPDATE
+        // Update old elements.
+        item.classed('completed', function(d){
+            return d.completed;
+        });
+
+        item.select('div.view label')
+            .text(function(d){
+                return d.descr;
+            });
+
+        item.select('input.toggle')
+            .property('checked', function(d){
+                return d.completed;
+            });
+
+        item.select('.edit')
+            .property('value', function(d){
+                return d.descr;
+            });
     };
 
     // Init list.
