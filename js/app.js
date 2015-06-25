@@ -75,6 +75,8 @@
             .classed('hidden', data.length === 0);
         d3.select('button.clear-completed')
             .classed('hidden', completed === 0);
+        d3.select('input.toggle-all')
+            .property('checked', left === 0);
 
         // Update local storage
         localStorage.setItem('todos-d3', JSON.stringify(data));
