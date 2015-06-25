@@ -64,12 +64,17 @@
         var left = data.filter(function(d){
             return !d.completed;
         }).length;
+        var completed = data.filter(function(d) {
+            return d.completed;
+        }).length;
         d3.select('span.todo-count strong.count')
             .text(left);
         d3.select('span.todo-count span.plural')
             .text(left === 1 ? "" : "s");
         d3.selectAll('section.main, footer.footer')
             .classed('hidden', data.length === 0);
+        d3.select('button.clear-completed')
+            .classed('hidden', completed === 0);
 
         // Update local storage
         localStorage.setItem('todos-d3', JSON.stringify(data));
