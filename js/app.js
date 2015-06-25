@@ -58,7 +58,7 @@
             return true;
         });
 
-        update0(filtered);
+        data_bind(filtered);
 
         // Adjust other parts of page
         var left = data.filter(function(d){
@@ -76,7 +76,7 @@
     };
 
     // Update-exit-remove loop.
-    var update0 = function(filtered) {
+    var data_bind = function(filtered) {
 
         var list = d3.select('.todo-list');
 
