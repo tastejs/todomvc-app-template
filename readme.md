@@ -39,8 +39,8 @@ The app was created with d3.js, by using its data-binding, illustrated
 in the [General Update Pattern](http://bl.ocks.org/mbostock/3808218)
 series of articles.
 
-The main idea is to bind the list of todo-items to DOM-elements with
-unique id:s (in our case the index and item description). If the model
+The main idea is to bind each todo item to a DOM-element with a
+unique id (in this case the index and item description). If the model
 is changed, d3.js will detect what parts of the DOM that no longer
 have a representation in the model, and update the DOM accordingly.
 
