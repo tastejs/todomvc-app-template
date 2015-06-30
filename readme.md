@@ -12,7 +12,7 @@
 
 - [Website](http://www.d3js.org)
 - [Documentation](https://github.com/mbostock/d3/wiki)
-- [Used by](https://en.wikipedia.org/wiki/D3.js#Usage)
+- [Used by](https://github.com/mbostock/d3/wiki/Gallery#examples)
 - [Blog](http://bost.ocks.org/mike/)
 
 ### Articles
