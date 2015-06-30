@@ -35,7 +35,7 @@
 
 ## Implementation
 
-The app was created with d3.js, by using its data-binding, illustrated
+The app was created with d3.js, by using its data binding, illustrated
 in the [General Update Pattern](http://bl.ocks.org/mbostock/3808218)
 series of articles.
 
@@ -44,7 +44,7 @@ unique id (in this case the index and item description). If the model
 is changed, d3.js will detect what parts of the DOM that no longer
 have a representation in the model, and update the DOM accordingly.
 
-### Minimal Example  with SVG and Circles
+### Minimal Example based on Three Little Circles
 
 The goal is to bind data elemets to circles in a SVG.
 
