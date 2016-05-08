@@ -17,7 +17,7 @@
 
 ### Support
 
-- [StackOverflow](http://stackoverflow.com/questions/tagged/__)
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/__)
 - [Google Groups]()
 - [Twitter](http://twitter.com/__)
 - [Google+]()
